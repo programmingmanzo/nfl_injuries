@@ -16,6 +16,7 @@ class NflInjuries::CLI
         1. San Francisco 49ers 
         2. Oaklan Raiders 
         DOC
+
     end
 
     def menu 
@@ -29,7 +30,7 @@ class NflInjuries::CLI
             when "2" 
                 player_list 
             when "list"
-                list_teams
+                call 
             else 
                 puts "Please type list or exit"
             end
@@ -37,19 +38,20 @@ class NflInjuries::CLI
     end
 
     def player_list 
-        puts "please select a player"
+        #puts "please select a player"
         puts <<-DOC 
         1. Jimmy G 
         2. E. Elliot
         DOC
-        player 
+        player
+        #@player = NflInjuries::Player.status  
     end 
     
 
     def player 
         input = nil 
         while input != "exit"
-            puts "Please select the player to get injury report on or type players to see the players list again or type exit"
+            puts "Please select the player to get injury report or type list to see the teams list again or type players to see players again or type exit"
         input = gets.strip.downcase 
             case input 
             when "1" 
@@ -57,12 +59,12 @@ class NflInjuries::CLI
             when "2" 
             puts "Torn ACL, out for season"
             when "list"
-                list_teams
+                call 
             when "players"
                 player_list
-            else 
+            else
                 puts "Please type list or players or exit"
-            end
+          end
         end
     end
         

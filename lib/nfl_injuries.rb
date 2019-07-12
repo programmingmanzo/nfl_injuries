@@ -1,6 +1,3 @@
-require "nfl_injuries/version"
-
-module NflInjuries
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative './nfl_injuries/version'
+require_relative './nfl_injuries/cli'
+#require_relative './nfl_injuries/player'
