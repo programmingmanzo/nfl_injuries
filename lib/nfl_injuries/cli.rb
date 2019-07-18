@@ -4,70 +4,49 @@ class NflInjuries::CLI
     
     def call 
         list_teams 
-        menu 
-        player_list 
-        player 
+        menu   
         goodbye 
     end
 
     def list_teams 
         puts "Welcome to NFL injuries"
-        puts <<-DOC 
-        1. San Francisco 49ers 
-        2. Oaklan Raiders 
-        DOC
-
+        @team = NflInjuries::Scraper.all_teams 
+        @team.each.with_index(1) do |team, i|
+            puts "#{i}. #{team}"
+        end
+    end
+     
+    def player  
+        #puts "please select player for more info or list to go back to teams or exit"
+        @player = NflInjuries::Player.all  
+        @player.each.with_index(1) do |player, i|
+            puts puts "#{i}. #{player.player_name} - #{player.player_details}\n#{player.player_url}"
+        
+        end
     end
 
     def menu 
         input = nil 
         while input != "exit"
-            puts "Please select the team you would like an injury report on or type exit"
+            puts "Please select the team you would like an injury report on:"
         input = gets.strip.downcase 
-            case input 
-            when "1" 
-                player_list 
-            when "2" 
-                player_list 
-            when "list"
-                call 
-            else 
-                puts "Please type list or exit"
+
+            if input.to_i > 0 
+            case 
+            when input == "1"
+                NflInjuries::Scraper.scrape_players_arizona
+                player
+            when input == "2"
+                NflInjuries::Scraper.scrape_players_atlanta  
+                player
+            when input == "2"
+                NflInjuries::Scraper.scrape_players_baltimore  
+                player
             end
         end
+      end 
     end
-
-    def player_list 
-        #puts "please select a player"
-        puts <<-DOC 
-        1. Jimmy G 
-        2. E. Elliot
-        DOC
-        player
-        #@player = NflInjuries::Player.status  
-    end 
-    
-
-    def player 
-        input = nil 
-        while input != "exit"
-            puts "Please select the player to get injury report or type list to see the teams list again or type players to see players again or type exit"
-        input = gets.strip.downcase 
-            case input 
-            when "1" 
-            puts "Broken Collar bone, out for 8 weeks"
-            when "2" 
-            puts "Torn ACL, out for season"
-            when "list"
-                call 
-            when "players"
-                player_list
-            else
-                puts "Please type list or players or exit"
-          end
-        end
-    end
-        
+  
 
     def goodbye 
         puts "Thank you for checking NFL injuries"
