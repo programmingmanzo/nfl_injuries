@@ -30,20 +30,25 @@ class NflInjuries::Scraper
 
         #binding.pry   
 
+
+
         i = 0 
-        if i == doc.css(".player_name").length
+
         while i < doc.css(".player_name").length
      
         player_name = doc.css(".player_name")[i].text.strip
         player_details = doc.css(".injury_details")[i].text.strip
         player_url = "https://www.usatoday.com/sports/nfl/cardinals/injuries/all/"
-
-        i += 1 
-
         NflInjuries::Player.new(player_name, player_details, player_url)
 
-        end
-      end
+        #binding.pry 
+        i += 1
+
+        #NflInjuries::Player.new(player_name, player_details, player_url)
+        
+       #end
+      #end 
+     end
     end
 
 
@@ -55,7 +60,7 @@ class NflInjuries::Scraper
         #binding.pry   
 
         i = 0 
-        if i == doc.css(".player_name").length
+        
         while i < doc.css(".player_name").length
 
         player_name = doc.css(".player_name")[i].text.strip
@@ -66,7 +71,7 @@ class NflInjuries::Scraper
 
         NflInjuries::Player.new(player_name, player_details, player_url)
 
-        end
+        #end
       end
     end
 
@@ -77,7 +82,7 @@ class NflInjuries::Scraper
         #binding.pry   
 
         i = 0 
-        if i == doc.css(".player_name").length
+        #if i == doc.css(".player_name").length
         while i < doc.css(".player_name").length
 
         player_name = doc.css(".player_name")[i].text.strip
@@ -88,7 +93,7 @@ class NflInjuries::Scraper
 
         NflInjuries::Player.new(player_name, player_details, player_url)
 
-        end
+        #end
       end
     end
 
@@ -99,7 +104,7 @@ class NflInjuries::Scraper
         #binding.pry   
 
         i = 0 
-        if i == doc.css(".player_name").length
+        #if i == doc.css(".player_name").length
         while i < doc.css(".player_name").length
 
         player_name = doc.css(".player_name")[i].text.strip
@@ -110,7 +115,7 @@ class NflInjuries::Scraper
 
         NflInjuries::Player.new(player_name, player_details, player_url)
 
-        end
+        #end
       end
     end
 
@@ -121,7 +126,7 @@ class NflInjuries::Scraper
         #binding.pry   
 
         i = 0 
-        if i == doc.css(".player_name").length
+        #if i == doc.css(".player_name").length
         while i < doc.css(".player_name").length
 
         player_name = doc.css(".player_name")[i].text.strip
@@ -132,7 +137,7 @@ class NflInjuries::Scraper
 
         NflInjuries::Player.new(player_name, player_details, player_url)
 
-        end
+        #end
       end
     end
 
@@ -143,8 +148,8 @@ class NflInjuries::Scraper
         #binding.pry   
 
         i = 0 
-        if i == doc.css(".player_name").length
-            puts "There are no injuries available"
+        #if i == doc.css(".player_name").length
+            #puts "There are no injuries available"
         while i < doc.css(".player_name").length
 
         player_name = doc.css(".player_name")[i].text.strip
@@ -155,7 +160,7 @@ class NflInjuries::Scraper
 
         NflInjuries::Player.new(player_name, player_details, player_url)
         
-        end
+        #end
       end
     end
 
@@ -166,8 +171,8 @@ class NflInjuries::Scraper
         #binding.pry   
 
         i = 0 
-        if i == doc.css(".player_name").length
-            puts "There are no injuries available"
+        #if i == doc.css(".player_name").length
+         #   puts "There are no injuries available"
         while i < doc.css(".player_name").length
 
         player_name = doc.css(".player_name")[i].text.strip
@@ -178,7 +183,7 @@ class NflInjuries::Scraper
 
         NflInjuries::Player.new(player_name, player_details, player_url)
         
-        end
+        #end
       end
     end
 
@@ -189,8 +194,8 @@ class NflInjuries::Scraper
         #binding.pry   
 
         i = 0 
-        if i == doc.css(".player_name").length
-            puts "There are no injuries available"
+        #if i == doc.css(".player_name").length
+         #   puts "There are no injuries available"
         while i < doc.css(".player_name").length
 
         player_name = doc.css(".player_name")[i].text.strip
@@ -201,7 +206,7 @@ class NflInjuries::Scraper
 
         NflInjuries::Player.new(player_name, player_details, player_url)
         
-        end
+        #end
       end
     end
 
@@ -212,8 +217,8 @@ class NflInjuries::Scraper
         #binding.pry   
 
         i = 0 
-        if i == doc.css(".player_name").length
-            puts "There are no injuries available"
+        #if i == doc.css(".player_name").length
+         #   puts "There are no injuries available"
         while i < doc.css(".player_name").length
 
         player_name = doc.css(".player_name")[i].text.strip
@@ -224,7 +229,7 @@ class NflInjuries::Scraper
 
         NflInjuries::Player.new(player_name, player_details, player_url)
         
-        end
+        #end
       end
     end
 
@@ -235,8 +240,8 @@ class NflInjuries::Scraper
         #binding.pry   
 
         i = 0 
-        if i == doc.css(".player_name").length
-            puts "There are no injuries available"
+        #if i == doc.css(".player_name").length
+         #   puts "There are no injuries available"
         while i < doc.css(".player_name").length
 
         player_name = doc.css(".player_name")[i].text.strip
@@ -247,7 +252,7 @@ class NflInjuries::Scraper
 
         NflInjuries::Player.new(player_name, player_details, player_url)
         
-        end
+        #end
       end
     end
 
@@ -541,6 +546,213 @@ class NflInjuries::Scraper
         player_name = doc.css(".player_name")[i].text.strip
         player_details = doc.css(".injury_details")[i].text.strip
         player_url = "https://www.usatoday.com/sports/nfl/giants/injuries/all/"
+
+        i += 1 
+
+        NflInjuries::Player.new(player_name, player_details, player_url)
+        
+        end
+      end
+    end
+
+    def self.scrape_players_ny_jets  
+
+        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/jets/injuries/all/"))
+
+        #binding.pry   
+
+        i = 0 
+        if i == doc.css(".player_name").length
+            puts "There are no injuries available"
+        while i < doc.css(".player_name").length
+
+        player_name = doc.css(".player_name")[i].text.strip
+        player_details = doc.css(".injury_details")[i].text.strip
+        player_url = "https://www.usatoday.com/sports/nfl/jets/injuries/all/"
+
+        i += 1 
+
+        NflInjuries::Player.new(player_name, player_details, player_url)
+        
+        end
+      end
+    end
+
+    def self.scrape_players_oakland  
+
+        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/raiders/injuries/all/"))
+
+        #binding.pry   
+
+        i = 0 
+        if i == doc.css(".player_name").length
+            puts "There are no injuries available"
+        while i < doc.css(".player_name").length
+
+        player_name = doc.css(".player_name")[i].text.strip
+        player_details = doc.css(".injury_details")[i].text.strip
+        player_url = "https://www.usatoday.com/sports/nfl/raiders/injuries/all/"
+
+        i += 1 
+
+        NflInjuries::Player.new(player_name, player_details, player_url)
+        
+        end
+      end
+    end
+
+    def self.scrape_players_philadelphia  
+
+        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/eagles/injuries/all/"))
+
+        #binding.pry   
+
+        i = 0 
+        if i == doc.css(".player_name").length
+            puts "There are no injuries available"
+        while i < doc.css(".player_name").length
+
+        player_name = doc.css(".player_name")[i].text.strip
+        player_details = doc.css(".injury_details")[i].text.strip
+        player_url = "https://www.usatoday.com/sports/nfl/eagles/injuries/all/"
+
+        i += 1 
+
+        NflInjuries::Player.new(player_name, player_details, player_url)
+        
+        end
+      end
+    end
+
+    def self.scrape_players_pittsburgh  
+
+        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/steelers/injuries/all/"))
+
+        #binding.pry   
+
+        i = 0 
+        if i == doc.css(".player_name").length
+            puts "There are no injuries available"
+        while i < doc.css(".player_name").length
+
+        player_name = doc.css(".player_name")[i].text.strip
+        player_details = doc.css(".injury_details")[i].text.strip
+        player_url = "https://www.usatoday.com/sports/nfl/steelers/injuries/all/"
+
+        i += 1 
+
+        NflInjuries::Player.new(player_name, player_details, player_url)
+        
+        end
+      end
+    end
+
+    def self.scrape_players_san_francisco  
+
+        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/49ers/injuries/all/"))
+
+        #binding.pry   
+
+        i = 0 
+        if i == doc.css(".player_name").length
+            puts "There are no injuries available"
+        while i < doc.css(".player_name").length
+
+        player_name = doc.css(".player_name")[i].text.strip
+        player_details = doc.css(".injury_details")[i].text.strip
+        player_url = "https://www.usatoday.com/sports/nfl/49ers/injuries/all/"
+
+        i += 1 
+
+        NflInjuries::Player.new(player_name, player_details, player_url)
+        
+        end
+      end
+    end
+
+    def self.scrape_players_seattle  
+
+        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/seahawks/injuries/all/"))
+
+        #binding.pry   
+
+        i = 0 
+        if i == doc.css(".player_name").length
+            puts "There are no injuries available"
+        while i < doc.css(".player_name").length
+
+        player_name = doc.css(".player_name")[i].text.strip
+        player_details = doc.css(".injury_details")[i].text.strip
+        player_url = "https://www.usatoday.com/sports/nfl/seahawks/injuries/all/"
+
+        i += 1 
+
+        NflInjuries::Player.new(player_name, player_details, player_url)
+        
+        end
+      end
+    end
+
+    def self.scrape_players_tampa_bay  
+
+        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/buccaneers/injuries/all/"))
+
+        #binding.pry   
+
+        i = 0 
+        if i == doc.css(".player_name").length
+            puts "There are no injuries available"
+        while i < doc.css(".player_name").length
+
+        player_name = doc.css(".player_name")[i].text.strip
+        player_details = doc.css(".injury_details")[i].text.strip
+        player_url = "https://www.usatoday.com/sports/nfl/buccaneers/injuries/all/"
+
+        i += 1 
+
+        NflInjuries::Player.new(player_name, player_details, player_url)
+        
+        end
+      end
+    end
+
+    def self.scrape_players_tennessee  
+
+        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/titans/injuries/all/"))
+
+        #binding.pry   
+
+        i = 0 
+        if i == doc.css(".player_name").length
+            puts "There are no injuries available"
+        while i < doc.css(".player_name").length
+
+        player_name = doc.css(".player_name")[i].text.strip
+        player_details = doc.css(".injury_details")[i].text.strip
+        player_url = "https://www.usatoday.com/sports/nfl/titans/injuries/all/"
+
+        i += 1 
+
+        NflInjuries::Player.new(player_name, player_details, player_url)
+        
+        end
+      end
+    end
+
+    def self.scrape_players_washington  
+
+        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/redskins/injuries/all/"))
+
+        #binding.pry   
+
+        i = 0 
+        if i == doc.css(".player_name").length
+            puts "There are no injuries available"
+        while i < doc.css(".player_name").length
+
+        player_name = doc.css(".player_name")[i].text.strip
+        player_details = doc.css(".injury_details")[i].text.strip
+        player_url = "https://www.usatoday.com/sports/nfl/redskins/injuries/all/"
 
         i += 1 
 
