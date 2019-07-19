@@ -28,9 +28,6 @@ class NflInjuries::Scraper
 
         doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/cardinals/injuries/all/"))
 
-        #binding.pry   
-
-
 
         i = 0 
 
