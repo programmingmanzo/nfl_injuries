@@ -11,6 +11,8 @@ class NflInjuries::Scraper
 
         team_name = doc.css(".TeamLogoNameLockup-name")[i].text.strip
 
+        binding.pry 
+
         i += 1
 
         NflInjuries::Teams.new(team_name)
@@ -19,6 +21,11 @@ class NflInjuries::Scraper
     
     end 
 
+    def self.player_url 
+
+
+
+    end
 
 
     def self.scrape_players_arizona  
