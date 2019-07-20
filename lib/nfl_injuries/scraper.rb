@@ -4,16 +4,11 @@ class NflInjuries::Scraper
     def self.scrape_team
 
         doc = Nokogiri::HTML(open("https://www.cbssports.com/nfl/injuries/"))
-    
-        i = 0 
 
-        while i < doc.css(".TeamLogoNameLockup-name a").length
+        doc.css(".TeamLogoNameLockup-name a").each do |team|
 
-        team_name = doc.css(".TeamLogoNameLockup-name")[i].text.strip
-
-        binding.pry 
-
-        i += 1
+        team_name = team.attribute("href").value.split("/")[-1].split("-")[-1]
+          #binding.pry 
 
         NflInjuries::Teams.new(team_name)
 
@@ -28,22 +23,23 @@ class NflInjuries::Scraper
     end
 
 
-    def self.scrape_players_arizona  
+    def self.scrape_players(team)
 
-        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/cardinals/injuries/all/"))
+        doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/#{team}/injuries/all/"))
 
         i = 0 
-
+        
         while i < doc.css(".player_name").length
-     
+
         player_name = doc.css(".player_name")[i].text.strip
         player_details = doc.css(".injury_details")[i].text.strip
-        player_url = "https://www.usatoday.com/sports/nfl/cardinals/injuries/all/"
+        player_url = "https://www.usatoday.com/sports/nfl/#{team}/injuries/all/"
+
+        i += 1 
+
         NflInjuries::Player.new(player_name, player_details, player_url)
 
-        i += 1
-
-     end
+      end
     end
 
 
