@@ -22,7 +22,7 @@ class NflInjuries::Scraper
 
     end
 
-
+=begin
     def self.scrape_players(team)
 
         doc = Nokogiri::HTML(open("https://www.usatoday.com/sports/nfl/#{team}/injuries/all/"))
@@ -42,7 +42,7 @@ class NflInjuries::Scraper
       end
     end
 
-
+=end 
 
     def self.scrape_players_atlanta  
 
