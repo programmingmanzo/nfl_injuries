@@ -1,4 +1,4 @@
-#CLI controller - Deals with user input. 
+#CLI controller
 
 class NflInjuries::CLI 
     
@@ -9,7 +9,7 @@ class NflInjuries::CLI
     
     end
 
-    #calls the scrape_team class method which Instantiates the new objects of teams after scraping
+    #List all the scraped teams that are saved in the Teams class method all
     def list_teams
 
         puts "Welcome to NFL injuries"
@@ -20,30 +20,7 @@ class NflInjuries::CLI
         team_players  
     end
 
-    #calls the the player.all class method and iterates through the collected elements
-    def no_dups
-
-        @player = NflInjuries::Player.all 
-        if @player.empty? == true    
-            puts "No injuries available" 
-        else
-            @player = NflInjuries::Player.all.select {|obj| obj.player_team.include?("#{selected_team.team_name}")}
-            #players.each.with_index(1) do |player, i| 
-            no_dups = players.uniq {|item| item.player_name}
-            no_dups.each.with_index(1) do |player, i|
-            puts puts "#{i}. #{player.player_team}: #{player.player_name} - #{player.player_details}\n#{player.player_url}"
-        end
-      end
-        menu 
-    end   
-    
-    def no_dups 
-
-
-
-    end
-
-
+    #Main menu for user input
     def menu 
 
         puts "Please type list to return to team selection or exit"
@@ -54,26 +31,26 @@ class NflInjuries::CLI
         elsif input == "exit"
             puts "Thank you for checking NFL injuries"
             exit
-        elsif input == "all"
-            all_players = NflInjuries::Player.all
-            #all_players.each do |obj|
-            no_dups = all_players.uniq {|item| item.player_name}
-            #binding.pry
-            no_dups.each.with_index(1) do |player, i| 
-            puts puts "#{i}. #{player.player_team}: #{player.player_name} - #{player.player_details}\n#{player.player_url}"  
-        end
-        menu 
-      #end
-     end
+        else 
+            menu 
+      end
     end
 
+    #Scrapes the team players only if they haven't been scraped before. 
     def team_players 
         input = nil 
-        puts "Please select the team you would like an injury report on or list to see team list again:"
-        while input != "exit"
-        input = gets.strip.downcase 
+        puts "Please select a number corresponding to a team you would like an injury report:"
+        input = gets.strip.downcase
+        if  input.to_i >= 1 && input.to_i <= NflInjuries::Teams.all.length 
+            selected_team = NflInjuries::Teams.all[input.to_i-1]
+
+            players = NflInjuries::Player.all.select {|obj| obj.player_team.include?("#{selected_team.team_name}")}
+            no_dups = players.uniq {|item| item.player_name}
+        else 
+            menu 
+        end
+        
         selected_team = NflInjuries::Teams.all[input.to_i-1]
-        #binding.pry 
 
         players = NflInjuries::Player.all.select {|obj| obj.player_team.include?("#{selected_team.team_name}")}
         no_dups = players.uniq {|item| item.player_name}
@@ -81,30 +58,25 @@ class NflInjuries::CLI
     
             if no_dups.length == 0 
                 NflInjuries::Scraper.scrape_players(selected_team.team_name)
-                players = NflInjuries::Player.all.select {|obj| obj.player_team.include?("#{selected_team.team_name}")}
-                no_dups = players.uniq {|item| item.player_name}
+                new_players = NflInjuries::Player.all.select {|obj| obj.player_team.include?("#{selected_team.team_name}")}
+                no_dups = new_players.uniq {|item| item.player_name}
                 no_dups.each.with_index(1) do |player, i|
-                puts puts "#{i}. #{player.player_team}: #{player.player_name} - #{player.player_details}\n#{player.player_url}"
+                    puts puts "#{i}. #{player.player_team}: #{player.player_name} - #{player.player_details}\n#{player.player_url}" 
                 end 
                 menu 
-
-        
-            elsif no_dups.length >= 1     
+      
+            else     
                 players = NflInjuries::Player.all.select {|obj| obj.player_team.include?("#{selected_team.team_name}")}
-                #players.each.with_index(1) do |player, i| 
                 no_dups = players.uniq {|item| item.player_name}
                 no_dups.each.with_index(1) do |player, i|
                 puts puts "#{i}. #{player.player_team}: #{player.player_name} - #{player.player_details}\n#{player.player_url}" 
-                binding.pry 
-                end
+                end 
                 menu 
-
-            else
-                menu 
-            end
         end
     end
 end
+
+  
 
    
 
