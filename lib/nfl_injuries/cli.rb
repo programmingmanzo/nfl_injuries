@@ -41,11 +41,9 @@ class NflInjuries::CLI
         input = nil 
         puts "Please select a number corresponding to a team you would like an injury report:"
         input = gets.strip.downcase
-        if  input.to_i >= 1 && input.to_i <= NflInjuries::Teams.all.length 
-            selected_team = NflInjuries::Teams.all[input.to_i-1]
 
-            players = NflInjuries::Player.all.select {|obj| obj.player_team.include?("#{selected_team.team_name}")}
-            no_dups = players.uniq {|item| item.player_name}
+        if  input.to_i >= 1 && input.to_i <= NflInjuries::Teams.all.length 
+
         else 
             menu 
         end
@@ -75,7 +73,6 @@ class NflInjuries::CLI
         end
     end
 end
-
   
 
    
