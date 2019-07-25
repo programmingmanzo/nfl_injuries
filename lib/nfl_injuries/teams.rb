@@ -1,14 +1,25 @@
 class NflInjuries::Teams 
 
-    attr_accessor :url 
+    attr_accessor :team_name 
 
-    def teams 
-        #should return a list of teams
-        teams = teams.new 
-        teams.url = https://www.cbssports.com/nfl/injuries/
+    @@all = [] 
+
+    def initialize(team_name)
+        
+        @team_name = team_name   
+
+        @@all << self
+
     end
 
+    def self.all
+
+        @@all 
+
+    end 
+
 end 
+
 
 
 

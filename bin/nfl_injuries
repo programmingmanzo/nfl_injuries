@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby  
 
-#require "bundler/setup"
-require './lib/nfl_injuries'
+require "bundler/setup"
+require_relative "../lib/nfl_injuries"
 
 NflInjuries::CLI.new.call   
